@@ -1,0 +1,13 @@
+type = "webpack"
+webpack_config = "webpack.config.js"
+
+zone_id = ""
+account_id = ""
+
+name = "worker"
+routes = ["worker.dstn.to/*"]
+workers_dev = false
+
+[env.dev]
+name = "worker-dev"
+workers_dev = true
