@@ -11,10 +11,10 @@ const routes: RouteDefinition[] = [
 export async function handleRequest(request: Request): Promise<Response> {
   const url = new URL(request.url);
 
-  const route = routes.find((route) => route.route.match(url.pathname.endsWith('/') ? url.pathname.slice(0, -1) : url.pathname) && route.method == request.method);
+  const route = routes.find((route) => route.route.match(url.pathname.endsWith('/') && url.pathname.length > 1 ? url.pathname.slice(0, -1) : url.pathname) && route.method == request.method);
   if (!route) return NotFound(request);
 
-  const params = route.route.match(url.pathname.endsWith('/') ? url.pathname.slice(0, -1) : url.pathname);
+  const params = route.route.match(url.pathname.endsWith('/') && url.pathname.length > 1 ? url.pathname.slice(0, -1) : url.pathname);
 
   return route.handler(request, params, url, route.args);
 }
