@@ -7,11 +7,13 @@
   "scripts": {
     "build": "wrangler build",
     "deploy": "wrangler publish; rm -rf worker",
-    "devploy": "wrangler publish --env dev; rm -rf worker"
+    "devploy": "wrangler publish --env dev; rm -rf worker",
+    "dev": "miniflare -w"
   },
   "devDependencies": {
     "@cloudflare/workers-types": "^2.2.2",
     "@types/route-parser": "^0.1.3",
+    "miniflare": "^1.4.1",
     "ts-loader": "8.3.0",
     "ts-node": "^10.2.1",
     "typescript": "^4.4.3",
