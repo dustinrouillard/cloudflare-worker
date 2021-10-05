@@ -1,6 +1,5 @@
-export function NotFound(request: Request): Response {
-  return new Response(JSON.stringify({ error: true, code: 'not_found' }), {
-    status: 404,
-    headers: { 'content-type': 'application/json', 'access-control-allow-origin': '*', 'access-control-allow-headers': '*' },
-  });
+import { CraftedResponse, ParsedRequest } from "../types/Routes";
+
+export function NotFound(request: ParsedRequest, response: CraftedResponse) {
+  return response.status(404).send({ error: true, code: 'not_found' });
 }
