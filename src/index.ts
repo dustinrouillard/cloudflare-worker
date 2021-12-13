@@ -61,7 +61,10 @@ addEventListener('fetch', (event) => {
       }
     }
 
-    if (route?.middlewares) for (const middleware of route.middlewares) middleware(req, res);
+    if (route?.middlewares) for await (const middleware of route.middlewares) {
+      let mw = await middleware(req, res);
+      if (!mw) return mw;
+    }
 
     route ? route.handler(req, res) : Base(req, res);
   }));
